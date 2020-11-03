@@ -2,26 +2,31 @@ local Anim = require("Animation")
 local Sprite = require("Sprite")
 
 local hero_atlas
-local hero_sprite
+-- local hero_sprite
 
 local angle = 0
 
 -- animation perameters
-local fps = 10
+local fps = 12
 local frame = 1
 local anim_timer = 1 / fps
 local xoffset
 local num_frames = 6
 
 local spr
-local a = Anim(16, 32, 16, 16, 6, 6, 12)
+-- local a = Anim(16, 32, 16, 16, 6, 6, 12)
+local walk = Anim(16,32,16,16,6,6,12)
+local swim = Anim(16,64,16,16,6,6,12)
 
 -- This runs ONCE at beginning of game
 function love.load()
     love.graphics.setDefaultFilter('nearest','nearest') -- Changes way image is displayed (pixlelated in this case)
     hero_atlas = love.graphics.newImage("assets/gfx/hero.png")
-    spr = Sprite(hero_atlas, 16, 16, 100, 100)
-    spr:add_animation("walk", a)
+    spr = Sprite(hero_atlas, 16, 16, 100, 100,10,10, 0)
+    spr:add_animation("walk", walk)
+    spr:add_animation("swim", swim)
+
+    spr:animate("swim")
     spr:animate("walk")
 
 end

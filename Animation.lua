@@ -19,7 +19,7 @@ function Anim:reset()
 end
 
 function Anim:set(quad)
-    self:reset()
+    -- self:reset()
     quad:setViewport(self.offset.x, self.offset.y, self.size.x, self.size.y)
 end
 
