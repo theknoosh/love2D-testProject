@@ -23,6 +23,12 @@ function Sprite:animate(anim_name)
     end
 end
 
+function Sprite:animation_finished()
+    if self.animations[self.current_anim] ~= nil then
+        return self.animations[self.current_anim].done
+    end
+end
+
 function Sprite:add_animation(name, anim)
     self.animations[name] = anim 
 end
